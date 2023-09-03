@@ -7,7 +7,8 @@ export default function App(){
   //   <Text>Hello</Text>,
   //   <Text>Hello</Text>
   // ]
-  const children = [1, 2, 3].map((i) => <Text>Hello {i}</Text>)
+  // const children = [1, 2, 3].map((i) => <Text>Hello {i}</Text>)
+  const children = new Array(100).fill(null).map((notUsed, index) => <Text>Hello {index}</Text>)
   return <SafeAreaView>{children}</SafeAreaView>
   
 }
