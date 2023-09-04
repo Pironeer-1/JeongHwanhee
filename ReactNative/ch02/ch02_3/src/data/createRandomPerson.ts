@@ -1,16 +1,16 @@
-import type {Iperson} from './Iperson'
+import type {IPerson} from './IPerson'
 import * as F from './faker'
 import * as U from './util'
 
-export const createRandomPerson = (): Iperson => {
+export const CreateRandomPerson = (): IPerson => {
     const name = F.randomName()
     return {
         id: F.randomId(),
         createdDate: F.randomDate(),
-        modifiedDate: new Date, 
-        name, 
+        modifiedDate: new Date,
+        name,
         email: F.randomEmail(),
-        avatar: F.randomAvatarUrl(name),
+        avatar: F.randomAvartarUrl(name),
         image: F.randomImage(),
         comments: F.randomParagraphs(4),
         counts: {
@@ -19,4 +19,4 @@ export const createRandomPerson = (): Iperson => {
             heart: U.random(100, 1000)
         }
     }
-}
+} 
