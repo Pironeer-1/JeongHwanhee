@@ -1,11 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
-import SignedInStack from './navigation';
-import LoginScreen from './screens/LoginScreen';
+import AuthNavigation from './AuthNavigation';
 
 export default function App() {
   return (
-    <SignedInStack />
-    // <LoginScreen />
+    <AuthNavigation />
+    
   );
 }
 
