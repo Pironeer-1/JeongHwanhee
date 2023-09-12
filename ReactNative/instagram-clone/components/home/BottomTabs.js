@@ -35,7 +35,7 @@ const BottomTabs = ({icons}) => {
 
     const Icon = ({icon}) => {
         <TouchableOpacity onPress={() => setActiveTab(icon.name)}>
-            <Image source={activeTab === icon.active ? icon.inactive : icon.active} 
+            <Image source={activeTab === icon.active ? icon.inactive : icon.active}
                    style={[ styles.icon,
                     icon.name === 'Profile' ? styles.profilePic() : null,
                     activeTab === 'Profile' && icon.name === activeTab ?
