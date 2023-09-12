@@ -6,29 +6,31 @@ import validator from 'email-validator'
 
 
 
-const LoginForm = ({navigation}) => {
-    const LoginFormSchema = Yup.object().shape({
+const SignupForm = ({navigation}) => {
+    const SignupFormSchema = Yup.object().shape({
         email: Yup.string().email().required('An email is required'),
+        username: Yup.string().required().min(2, 'A username is reuired'),
         password: Yup.string().required().min(8, 'Your password has to have at least 8 characters')
     })
 
     return (
         <View style={styles.wrapper}>
-            <Formik initialValues={{email: '', password: ''}} 
+            <Formik initialValues={{email: '', username: '', password: ''}} 
                     onSubmit={(values)=>{
                         console.log(values)
                     }}
-                    validationSchema={LoginFormSchema}
+                    validationSchema={SignupFormSchema}
                     validateOnMount={true}
             >
             {({handleChange, handleBlur, handleSubmit, values, isValid}) => (
                 <>
+
                     <View style={[styles.inputField,
                             {borderColor: values.email.length < 1 || validator.validate(values.email) ? '#ccc' : 'red'}
                         ]}>
                         <TextInput
                             placeholderTextColor='#444'
-                            placeholder='Phone number, username or email'
+                            placeholder='Email'
                             autoCapitalize='none'
                             keyboardType='email-address'
                             textContentType='emailAddress'
@@ -36,6 +38,19 @@ const LoginForm = ({navigation}) => {
                             onChangeText={handleChange('email')}
                             onBlur={handleBlur('email')}
                             value={values.email}
+                        />   
+                    </View>
+                    <View style={[styles.inputField,
+                            {borderColor: values.username.length < 1 || values.username.length >= 2 ? '#ccc' : 'red'}
+                        ]}>
+                        <TextInput
+                            placeholderTextColor='#444'
+                            placeholder='Username'
+                            autoCapitalize='none'
+                            textContentType='username'
+                            onChangeText={handleChange('username')}
+                            onBlur={handleBlur('username')}
+                            value={values.username}
                         />   
                     </View>
                     <View style={[styles.inputField, 
@@ -52,18 +67,16 @@ const LoginForm = ({navigation}) => {
                             value={values.password}
                         />
                     </View>
-                    <View style={{alignItems: 'flex-end', marginBottom: 30}}>
-                        <Text style={{color: '#6bb0f5'}}>Forgot password?</Text>
-                    </View>
+               
 
                     <Pressable titleSize={20} style={styles.button(isValid)} onPress={handleSubmit} disabled={!isValid}>
-                        <Text style={styles.buttonText}>Log In</Text>
+                        <Text style={styles.buttonText}>Sign Up</Text>
                     </Pressable>
 
                     <View style={styles.signupContainer}>
-                        <Text>Don't have an account?</Text>
-                        <TouchableOpacity onPress={() => navigation.push('SignupScreen')}>
-                            <Text style={{color: '#6bb0f5'}}> Sign Up</Text>
+                        <Text>Already have an account?</Text>
+                        <TouchableOpacity onPress={() => navigation.goBack()}>
+                            <Text style={{color: '#6bb0f5'}}> Log in</Text>
                         </TouchableOpacity>
                     </View>
                 </>
@@ -102,4 +115,4 @@ const styles = StyleSheet.create({
         marginTop: 50,
     }
 })
-export default LoginForm
+export default SignupForm
