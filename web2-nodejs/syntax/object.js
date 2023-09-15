@@ -9,14 +9,27 @@ while(i < members.length) {
 }
 */
 
-var roles = {
-  programmer: "egoing",
-  designer: "k8805",
-  manager: "hoya",
-};
-console.log(roles.designer);
-console.log(roles["designer"]);
+// var roles = {
+//   programmer: "egoing",
+//   designer: "k8805",
+//   manager: "hoya",
+// };
+// console.log(roles.designer);
+// console.log(roles["designer"]);
 
-for (var n in roles) {
-  console.log("object => ", n, "value => ", roles[n]);
-}
+// for (var n in roles) {
+//   console.log("object => ", n, "value => ", roles[n]);
+// }
+
+var f = function () {
+  console.log(1 + 1);
+  console.log(1 + 2);
+};
+
+var a = [f];
+a[0]();
+
+var o = {
+  func: f,
+};
+o.func();
