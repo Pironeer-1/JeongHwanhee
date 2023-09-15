@@ -1,26 +1,29 @@
-import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { Text, TouchableOpacity, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-const IconButton = ({ name }) => {
+const IconButton = ({ name, bgColor }) => {
   return (
-    <View style={{ paddingHorizontal: 6 }}>
+    <TouchableOpacity
+      hitSlop={{ top: 15, bottom: 15 }}
+      style={{ paddingHorizontal: 6, backgroundColor: bgColor }}
+    >
       <Ionicons name={name} size={24} color="black" />
-    </View>
+    </TouchableOpacity>
   );
 };
 
-const Header = (props) => {
+const Header = () => {
   return (
     <View
       style={{
         flexDirection: "row",
         justifyContent: "space-between",
-        alignItems: "center",
         paddingVertical: 10,
       }}
     >
       <Text style={{ fontSize: 22, fontWeight: "bold" }}>친구</Text>
+
       <View style={{ flexDirection: "row" }}>
         <IconButton name="search-outline" />
         <IconButton name="person-add-outline" />
